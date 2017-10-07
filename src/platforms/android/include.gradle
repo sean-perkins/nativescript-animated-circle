@@ -1,0 +1,22 @@
+/* Include.gradle configuration: http://docs.nativescript.org/plugins/plugins#includegradle-specification */
+
+android {
+	productFlavors {
+		"nativescript-animated-circle" {
+			dimension "nativescript-animated-circle"
+		}
+	}
+}
+
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+
+dependencies {
+    // Describe plugin native Android dependencies like
+	// compile "groupName:pluginName:ver"
+    // EXAMPLE: compile "com.facebook.fresco:fresco:0.9.0+"
+    compile 'com.github.jakob-grabner:Circle-Progress-View:v1.3'
+}
