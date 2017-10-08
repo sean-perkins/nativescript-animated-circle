@@ -1,6 +1,6 @@
 {
     "name": "nativescript-animated-circle",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "Animated circle progress in your NativeScript applications.",
     "main": "animated-circle",
     "typings": "index.d.ts",

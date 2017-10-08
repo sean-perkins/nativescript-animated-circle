@@ -37,6 +37,18 @@ tns plugin add nativescript-animated-circle
 </Page>
 ```
 
+#### Angular
+
+To use this plugin in Angular, please register the element above your `AppModule` declaration.
+
+```
+import { registerElement } from 'nativescript-angular/element-registry'
+
+registerElement('AnimatedCircle', () => require('nativescript-animated-circle').AnimatedCircle);
+```
+
+Then you can leverage the plugin using `<AnimatedCircle></AnimatedCircle>` in your templates.
+
 ## API
 
 | Property | Default | Description |
