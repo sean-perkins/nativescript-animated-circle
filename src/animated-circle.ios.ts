@@ -1,5 +1,5 @@
 import { Common } from './animated-circle.common';
-import { Color } from 'tns-core-modules/color/Color';
+import { Color } from 'tns-core-modules/color';
 
 declare const DRCircularProgressView;
 
