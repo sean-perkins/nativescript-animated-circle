@@ -33,6 +33,7 @@ export class AnimatedCircle extends Common {
     }
 
     initNativeView() {
+        this.android.setTextSize(0);
         this.updateAnimatedCircle();
     }
 
@@ -160,6 +161,7 @@ export class AnimatedCircle extends Common {
             }
             if (this.rimWidth) {
                 this.android.setRimWidth(this.rimWidth);
+                this.android.setBarWidth(this.rimWidth);
             }
             if (this.barColor) {
                 this.android.setBarColor([new Color(this.barColor).argb]);
