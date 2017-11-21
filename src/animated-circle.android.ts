@@ -1,6 +1,5 @@
 import { Common } from './animated-circle.common';
 import { Color } from 'tns-core-modules/color';
-import * as app from 'tns-core-modules/application/Application';
 
 declare const com, android, at;
 
