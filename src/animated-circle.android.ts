@@ -1,6 +1,5 @@
 import { Common } from './animated-circle.common';
 import { Color } from 'tns-core-modules/color';
-import * as app from 'tns-core-modules/application/Application';
 
 declare const com, android, at;
 
@@ -33,6 +32,7 @@ export class AnimatedCircle extends Common {
     }
 
     initNativeView() {
+        this.android.setTextSize(0);
         this.updateAnimatedCircle();
     }
 
@@ -160,6 +160,7 @@ export class AnimatedCircle extends Common {
             }
             if (this.rimWidth) {
                 this.android.setRimWidth(this.rimWidth);
+                this.android.setBarWidth(this.rimWidth);
             }
             if (this.barColor) {
                 this.android.setBarColor([new Color(this.barColor).argb]);
