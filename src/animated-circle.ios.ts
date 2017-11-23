@@ -3,6 +3,7 @@ import { Color } from 'tns-core-modules/color';
 import { Label } from 'tns-core-modules/ui/label';
 import * as utils from 'tns-core-modules/utils/utils';
 
+declare const DRCircularProgressView;
 
 export class AnimatedCircle extends Common {
 
