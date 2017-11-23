@@ -1,18 +1,28 @@
 import { Common } from './animated-circle.common';
-import { Color } from 'tns-core-modules/color/Color';
+import { Color } from 'tns-core-modules/color';
+import { Label } from 'tns-core-modules/ui/label';
+import * as utils from 'tns-core-modules/utils/utils';
 
-declare const DRCircularProgressView;
 
 export class AnimatedCircle extends Common {
 
     private _ios: any;
+
+    private _label: UILabel;
+    private _text: string;
 
     constructor() {
         super();
         this._ios = DRCircularProgressView.new();
         this._ios.alternativeColor = new Color('#FF5722').ios;
         this._ios.progressColor = new Color('#3D8FF4').ios;
+        this._ios.backgroundColor = new Color('#348F74').ios;
         this._ios.thickness = 5;
+
+
+        this._label = UILabel.alloc().initWithFrame(CGRectMake(0, 0, 0, 0));
+        this._label.textAlignment = NSTextAlignment.Center;
+        this._label.textColor = new Color('#3D8FF4').ios;
     }
 
     createNativeView() {
@@ -20,6 +30,22 @@ export class AnimatedCircle extends Common {
     }
 
     initNativeView() {
+
+    }
+
+    onLayout(left, top, right, bottom) {
+        super.onLayout(left, top, right, bottom);
+        console.log(`XML: dimensions ${this.effectiveWidth}x${this.effectiveHeight}`);
+        let dpWidth = utils.layout.toDeviceIndependentPixels(this.effectiveWidth);
+        let dpHeight = utils.layout.toDeviceIndependentPixels(this.effectiveHeight);
+        console.log(`XML: dimensions ${dpWidth}x${dpHeight}`); // correct! exactly what user specified
+
+
+        this._label.frame = CGRectMake(0, 0, dpWidth, dpHeight);
+        // this._label.text = 'asd ';
+        this._ios.addSubview(this._label);
+        this._ios.bringSubviewToFront(this._label);
+
     }
 
     get ios() {
@@ -83,6 +109,31 @@ export class AnimatedCircle extends Common {
      */
     set endAngle(value: number) {
         this._ios.endAngle = value;
+    }
+
+    set text(value: string) {
+        this._label.text = value;
+    }
+
+    get text() {
+        return this._label.text;
+    }
+
+    set textColor(value: string | UIColor) {
+        if (value instanceof UIColor) {
+            this._label.textColor = value;
+        }
+        else if (typeof value === 'string') {
+            this._label.textColor = new Color(value).ios;
+        }
+    }
+
+    set textSize(value: number) {
+        this._label.font = this._label.font.fontWithSize(value);
+    }
+
+    get textSize() {
+        return this._label.font.pointSize;
     }
 
 }

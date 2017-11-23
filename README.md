@@ -33,7 +33,10 @@ tns plugin add nativescript-animated-circle
         fillColor="#eee"
         clockwise="true"
         rimWidth="5"
-        progress="80" />
+        progress="80"
+        text="bam"
+        textSize="28"
+        textColor="red" />
 </Page>
 ```
 
@@ -63,6 +66,9 @@ Then you can leverage the plugin using `<AnimatedCircle></AnimatedCircle>` in yo
 | animated | false | _Android only_ animation status. |
 | animateFrom | 0 | _Android only_ the progress value to animate from. |
 | animationDuration | 1000 | _Android only_ the duration to animate for. |
+| text | "" | The text inside of the circle. |
+| textSize | 0 | Text size, 0 will hide the text |
+| textColor | #ff0000 | Text color |
 
 ### Available for Contract
 
