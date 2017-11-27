@@ -36,14 +36,11 @@ export class AnimatedCircle extends Common {
 
     onLayout(left, top, right, bottom) {
         super.onLayout(left, top, right, bottom);
-        console.log(`XML: dimensions ${this.effectiveWidth}x${this.effectiveHeight}`);
         let dpWidth = utils.layout.toDeviceIndependentPixels(this.effectiveWidth);
         let dpHeight = utils.layout.toDeviceIndependentPixels(this.effectiveHeight);
-        console.log(`XML: dimensions ${dpWidth}x${dpHeight}`); // correct! exactly what user specified
 
 
         this._label.frame = CGRectMake(0, 0, dpWidth, dpHeight);
-        // this._label.text = 'asd ';
         this._ios.addSubview(this._label);
         this._ios.bringSubviewToFront(this._label);
 

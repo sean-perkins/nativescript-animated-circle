@@ -42,9 +42,6 @@ export class AnimatedCircle extends Common {
         this.android.setTextScale(1.1);
         this.android.setTextSize(300);
         this.android.setUnitVisible(false);
-        // this.android.setUnit('bam2');
-        // this.android.setUnitSize(500);
-        // this.android.setUnitScale(1);
         this.updateAnimatedCircle();
     }
 
