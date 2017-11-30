@@ -13,7 +13,10 @@
         rimColor="#eee"
         barColor="#3D8FF4"
         clockwise="true"
-        rimWidth="5"
-        progress="{{ progress }}" />
+        rimWidth="25"
+        progress="{{ progress }}"
+        text="bam"
+        textSize="28"
+        textColor="red"/>
   </StackLayout>
 </Page>

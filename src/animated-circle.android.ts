@@ -1,6 +1,6 @@
 import { Common } from './animated-circle.common';
 import { Color } from 'tns-core-modules/color';
-import * as app from 'tns-core-modules/application/Application';
+import * as app from 'tns-core-modules/application';
 
 declare const com, android, at;
 
@@ -18,11 +18,15 @@ export class AnimatedCircle extends Common {
     private _spinBarColor: any;
     private _barWidth: number;
     private _startAngle: number;
+    private _text = '';
+    private _textColor = new Color('orange');
+    private _textSize = 28 * 10;
 
     clockwise = true;
 
     barColor = '#3D8FF4';
     fillColor: any;
+
 
     constructor() {
         super();
@@ -33,6 +37,11 @@ export class AnimatedCircle extends Common {
     }
 
     initNativeView() {
+        this.android.setAutoTextSize(false);
+        this.android.setTextMode(at.grabner.circleprogress.TextMode.TEXT);
+        this.android.setTextScale(1.1);
+        this.android.setTextSize(300);
+        this.android.setUnitVisible(false);
         this.updateAnimatedCircle();
     }
 
@@ -130,8 +139,35 @@ export class AnimatedCircle extends Common {
         return this._barWidth;
     }
 
+    set text(value: string) {
+        this._text = value;
+        this.updateAnimatedCircle();
+    }
+
+    get text() {
+        return this.android.getText();
+    }
+
+    set textColor(value: string) {
+        this._textColor = new Color(value);
+        this.updateAnimatedCircle();
+    }
+
+    set textSize(value: number) {
+        this._textSize = value * 10;
+        this.updateAnimatedCircle();
+    }
+
+    get textSize() {
+
+        return this.android.getTextSize();
+    }
+
     private updateAnimatedCircle(): void {
         if (this.android) {
+            this.android.setText(this._text);
+            this.android.setTextColor(this._textColor.argb);
+            this.android.setTextSize(this.textSize);
             if (this.animated) {
                 if (this.animateFrom) {
                     this.android.setValueAnimated(this.animateFrom, this.progress, this.animationDuration);
@@ -159,6 +195,7 @@ export class AnimatedCircle extends Common {
                 this.android.setStartAngle(this.startAngle);
             }
             if (this.rimWidth) {
+                this.android.setBarWidth(this.rimWidth);
                 this.android.setRimWidth(this.rimWidth);
             }
             if (this.barColor) {
