@@ -167,7 +167,7 @@ export class AnimatedCircle extends Common {
         if (this.android) {
             this.android.setText(this._text);
             this.android.setTextColor(this._textColor.argb);
-            this.android.setTextSize(this.textSize);
+            this.android.setTextSize(this._textSize);
             if (this.animated) {
                 if (this.animateFrom) {
                     this.android.setValueAnimated(this.animateFrom, this.progress, this.animationDuration);
