@@ -1,14 +1,9 @@
 import { Common } from './animated-circle.common';
 import { Color } from 'tns-core-modules/color';
-import { Label } from 'tns-core-modules/ui/label';
 import * as utils from 'tns-core-modules/utils/utils';
 
-declare const DRCircularProgressView;
-
 export class AnimatedCircle extends Common {
-
     private _ios: any;
-
     private _label: UILabel;
     private _text: string;
 
@@ -36,14 +31,12 @@ export class AnimatedCircle extends Common {
 
     onLayout(left, top, right, bottom) {
         super.onLayout(left, top, right, bottom);
-        let dpWidth = utils.layout.toDeviceIndependentPixels(this.effectiveWidth);
-        let dpHeight = utils.layout.toDeviceIndependentPixels(this.effectiveHeight);
-
+        const dpWidth = utils.layout.toDeviceIndependentPixels(this.effectiveWidth);
+        const dpHeight = utils.layout.toDeviceIndependentPixels(this.effectiveHeight);
 
         this._label.frame = CGRectMake(0, 0, dpWidth, dpHeight);
         this._ios.addSubview(this._label);
         this._ios.bringSubviewToFront(this._label);
-
     }
 
     get ios() {

@@ -1,22 +1,7 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page"
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page" 
   xmlns:ui="nativescript-animated-circle">
   <StackLayout class="p-20">
-    <Label text="Demo App"
-      marginBottom="20"
-      class="t-20 text-center c-black" textWrap="true"/>
-      <ui:AnimatedCircle
-        backgroundColor="transparent"
-        width="200"
-        height="200"
-        animated="true"
-        animateFrom="0"
-        rimColor="#eee"
-        barColor="#3D8FF4"
-        clockwise="true"
-        rimWidth="25"
-        progress="{{ progress }}"
-        text="bam"
-        textSize="28"
-        textColor="red"/>
+    <Label text="Demo App" marginBottom="20" class="t-20 text-center c-black" textWrap="true"/>
+    <ui:AnimatedCircle backgroundColor="transparent" width="200" height="200" animated="true" animateFrom="0" rimColor="#eee" barColor="#3D8FF4" clockwise="true" rimWidth="25" progress="{{ progress }}" text="bam" textSize="28" textColor="red"/>
   </StackLayout>
 </Page>

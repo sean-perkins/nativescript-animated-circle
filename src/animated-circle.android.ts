@@ -1,13 +1,10 @@
 import { Common } from './animated-circle.common';
 import { Color } from 'tns-core-modules/color';
-import * as app from 'tns-core-modules/application';
 
-declare const com, android, at;
+declare const at;
 
 export class AnimatedCircle extends Common {
-
     private _android: any;
-
     private _progress: number;
     private _animateFrom: number;
     private _animationDuration = 1000;
