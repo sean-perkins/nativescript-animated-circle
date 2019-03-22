@@ -71,17 +71,13 @@ export class AnimatedCircle extends Common {
 
   onLoaded(): void {
     super.onLoaded();
-    if (this._childViews) {
-      console.log('childViews', this._childViews.size);
-      this._childViews.forEach(value => {
-        if (!value.parent) {
-          this._addView(value);
-          console.log('holder', this._layout);
-          console.log('value.nativeView', value.nativeView);
-          this._layout.addView(value.nativeView);
-        }
-      });
-    }
+    this._childViews.forEach(value => {
+      if (!value.parent) {
+        this._addView(value);
+        console.log('value.nativeView', value.nativeView);
+        this._layout.addView(value.nativeView);
+      }
+    });
   }
 
   _addChildFromBuilder(name: string, value: View): void {

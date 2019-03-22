@@ -1,15 +1,17 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page" 
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page" actionBarHidden="true" 
   xmlns:ac="nativescript-animated-circle">
 
   <AbsoluteLayout>
-    <!-- <ac:AnimatedCircle top="0" left="0" backgroundColor="transparent" width="100%" height="100%" animated="false" rimColor="#fff" barColor="#009ac7" fillColor="transparent" clockwise="true" rimWidth="16" progress="100" text="a" textSize="0" textColor="#fff"> -->
-    <!-- <StackLayout> -->
-    <ac:AnimatedCircle backgroundColor="transparent" width="100%" height="100%" animated="true" animateFrom="0" rimColor="#fff" barColor="#fbe122" fillColor="transparent" clockwise="true" rimWidth="10" progress="75" text="b" textSize="0" textColor="#fff">
-      <StackLayout backgroundColor="orange">
-        <Label text="Inner Stack" color="blue" fontSize="22" textWrap="true" />
-      </StackLayout>
+
+    <ac:AnimatedCircle top="0" left="0" backgroundColor="purple" width="100%" height="100%" animated="false" rimColor="#fff" barColor="#009ac7" fillColor="transparent" clockwise="true" rimWidth="14" progress="100" text="a" textSize="0" textColor="#fff">
+
+      <ac:AnimatedCircle backgroundColor="yellow" width="100%" height="100%" animated="true" animateFrom="0" rimColor="#fff" barColor="#fbe122" fillColor="transparent" clockwise="true" rimWidth="10" progress="75" text="b" textSize="0" textColor="#fff">
+        <StackLayout backgroundColor="orange">
+          <Label text="Inner Stack" color="blue" fontSize="22" textWrap="true" />
+        </StackLayout>
+      </ac:AnimatedCircle>
+
     </ac:AnimatedCircle>
-    <!-- </StackLayout> -->
-    <!-- </ac:AnimatedCircle> -->
+
   </AbsoluteLayout>
 </Page>
