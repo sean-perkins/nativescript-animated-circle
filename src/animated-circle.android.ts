@@ -6,6 +6,9 @@ declare const at;
 
 export class AnimatedCircle extends Common {
   private _android: any;
+  private _layout: android.widget.LinearLayout;
+  private _androidViewId: number;
+  private _childViews: Map<number, View>;
   private _progress: number;
   private _animateFrom: number;
   private _animationDuration = 1000;
@@ -19,10 +22,8 @@ export class AnimatedCircle extends Common {
   private _text = '';
   private _textColor = new Color('orange');
   private _textSize = 28 * 10;
-  private _childViews: Map<number, View>;
 
   clockwise = true;
-
   barColor = '#3D8FF4';
   fillColor: any;
 
@@ -31,19 +32,37 @@ export class AnimatedCircle extends Common {
   }
 
   createNativeView() {
-    return new at.grabner.circleprogress.CircleProgressView(
+    this._android = new at.grabner.circleprogress.CircleProgressView(
       this._context,
       null
     );
+    // Using a LinearLayout to add child items
+    this._layout = new android.widget.LinearLayout(this._context);
+    if (!this._androidViewId) {
+      this._androidViewId = android.view.View.generateViewId();
+    }
+    this._layout.setId(this._androidViewId);
+    this._layout.setOrientation(android.widget.LinearLayout.VERTICAL);
+    this._layout.setGravity(android.view.Gravity.FILL_VERTICAL);
+    this._layout.setLayoutParams(
+      new android.view.ViewGroup.LayoutParams(
+        android.view.ViewGroup.LayoutParams.FILL_PARENT,
+        android.view.ViewGroup.LayoutParams.FILL_PARENT
+      )
+    );
+
+    this._layout.addView(this._android);
+
+    return this._layout;
   }
 
   initNativeView() {
-    this.android.setAutoTextSize(false);
-    this.android.setTextMode(at.grabner.circleprogress.TextMode.TEXT);
-    this.android.setTextScale(1.1);
-    this.android.setTextSize(300);
-    this.android.setUnitVisible(false);
-    this.updateAnimatedCircle();
+    this._android.setAutoTextSize(false);
+    this._android.setTextMode(at.grabner.circleprogress.TextMode.TEXT);
+    this._android.setTextScale(1.1);
+    this._android.setTextSize(300);
+    this._android.setUnitVisible(false);
+    this._updateAnimatedCircle();
   }
 
   public disposeNativeView() {
@@ -52,11 +71,17 @@ export class AnimatedCircle extends Common {
 
   onLoaded(): void {
     super.onLoaded();
-    this._childViews.forEach(value => {
-      if (!value.parent) {
-        this._addView(value);
-      }
-    });
+    if (this._childViews) {
+      console.log('childViews', this._childViews.size);
+      this._childViews.forEach(value => {
+        if (!value.parent) {
+          this._addView(value);
+          console.log('holder', this._layout);
+          console.log('value.nativeView', value.nativeView);
+          this._layout.addView(value.nativeView);
+        }
+      });
+    }
   }
 
   _addChildFromBuilder(name: string, value: View): void {
@@ -69,12 +94,12 @@ export class AnimatedCircle extends Common {
   }
 
   get android() {
-    return this.nativeView;
+    return this._android;
   }
 
   set progress(value: number) {
     this._progress = Number(value);
-    this.updateAnimatedCircle();
+    this._updateAnimatedCircle();
   }
 
   get progress(): number {
@@ -83,7 +108,7 @@ export class AnimatedCircle extends Common {
 
   set animateFrom(value: number) {
     this._animateFrom = Number(value);
-    this.updateAnimatedCircle();
+    this._updateAnimatedCircle();
   }
 
   get animateFrom(): number {
@@ -92,7 +117,7 @@ export class AnimatedCircle extends Common {
 
   set animationDuration(value: number) {
     this._animationDuration = Number(value);
-    this.updateAnimatedCircle();
+    this._updateAnimatedCircle();
   }
 
   get animationDuration(): number {
@@ -101,7 +126,7 @@ export class AnimatedCircle extends Common {
 
   set animated(value: boolean) {
     this._animated = Boolean(value);
-    this.updateAnimatedCircle();
+    this._updateAnimatedCircle();
   }
 
   get animated(): boolean {
@@ -110,7 +135,7 @@ export class AnimatedCircle extends Common {
 
   set maxValue(value: number) {
     this._maxValue = Number(value);
-    this.updateAnimatedCircle();
+    this._updateAnimatedCircle();
   }
 
   get maxValue(): number {
@@ -119,7 +144,7 @@ export class AnimatedCircle extends Common {
 
   set rimColor(value: any) {
     this._rimColor = value;
-    this.updateAnimatedCircle();
+    this._updateAnimatedCircle();
   }
 
   get rimColor() {
@@ -128,7 +153,7 @@ export class AnimatedCircle extends Common {
 
   set rimWidth(value: number) {
     this._rimWidth = Number(value);
-    this.updateAnimatedCircle();
+    this._updateAnimatedCircle();
   }
 
   get rimWidth() {
@@ -137,7 +162,7 @@ export class AnimatedCircle extends Common {
 
   set spinBarColor(value: any) {
     this._spinBarColor = value;
-    this.updateAnimatedCircle();
+    this._updateAnimatedCircle();
   }
 
   get spinBarColor() {
@@ -146,7 +171,7 @@ export class AnimatedCircle extends Common {
 
   set startAngle(value: number) {
     this._startAngle = Number(value);
-    this.updateAnimatedCircle();
+    this._updateAnimatedCircle();
   }
 
   get startAngle() {
@@ -155,7 +180,7 @@ export class AnimatedCircle extends Common {
 
   set barWidth(value: number) {
     this._barWidth = Number(value);
-    this.updateAnimatedCircle();
+    this._updateAnimatedCircle();
   }
 
   get barWidth() {
@@ -164,7 +189,7 @@ export class AnimatedCircle extends Common {
 
   set text(value: string) {
     this._text = value;
-    this.updateAnimatedCircle();
+    this._updateAnimatedCircle();
   }
 
   get text() {
@@ -173,19 +198,19 @@ export class AnimatedCircle extends Common {
 
   set textColor(value: string) {
     this._textColor = new Color(value);
-    this.updateAnimatedCircle();
+    this._updateAnimatedCircle();
   }
 
   set textSize(value: number) {
     this._textSize = value * 10;
-    this.updateAnimatedCircle();
+    this._updateAnimatedCircle();
   }
 
   get textSize() {
     return this.android.getTextSize();
   }
 
-  private updateAnimatedCircle(): void {
+  private _updateAnimatedCircle(): void {
     if (this.android) {
       this.android.setText(this._text);
       this.android.setTextColor(this._textColor.argb);
