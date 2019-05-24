@@ -1,9 +1,11 @@
 allprojects {
     repositories {
         maven { url "https://jitpack.io" }
+        google()
     }
 }
 
 dependencies {
     implementation 'com.github.jakob-grabner:Circle-Progress-View:1.4'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
 }

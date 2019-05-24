@@ -1,17 +1,22 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page" actionBarHidden="true" 
   xmlns:ac="nativescript-animated-circle">
 
-  <AbsoluteLayout>
+  <!-- <AbsoluteLayout> -->
 
-    <ac:AnimatedCircle top="0" left="0" backgroundColor="purple" width="100%" height="100%" animated="false" rimColor="#fff" barColor="#009ac7" fillColor="transparent" clockwise="true" rimWidth="14" progress="100" text="a" textSize="0" textColor="#fff">
-
-      <ac:AnimatedCircle backgroundColor="yellow" width="100%" height="100%" animated="true" animateFrom="0" rimColor="#fff" barColor="#fbe122" fillColor="transparent" clockwise="true" rimWidth="10" progress="75" text="b" textSize="0" textColor="#fff">
-        <StackLayout backgroundColor="orange">
-          <Label text="Inner Stack" color="blue" fontSize="22" textWrap="true" />
-        </StackLayout>
-      </ac:AnimatedCircle>
-
+  <GridLayout rows="*" columns="*" height="100%" width="100%">
+    <ac:AnimatedCircle row="0" width="100%" height="100%" rimColor="#009ac7" barColor="#009ac7" fillColor="#414042" rimWidth="15" progress="100" textSize="0" textColor="#fff">
     </ac:AnimatedCircle>
+    <ac:AnimatedCircle row="0" width="90%" height="90%" animated="true" rimColor="transparent" barColor="#fbe122" fillColor="#414042" rimWidth="5" progress="60" textSize="0" textColor="#fff">
+    </ac:AnimatedCircle>
+    <ac:AnimatedCircle row="0" width="87%" height="87%" animated="true" rimColor="transparent" barColor="#ff671f" fillColor="#414042" rimWidth="5" progress="75" textSize="0" textColor="#fff">
+      <AbsoluteLayout>
+        <GridLayout rows="*, *, *, *" columns="*" top="35" left="{{ centerScreen }}" horizontalAlignment="center">
+          <Label text="This is Label 1" row="0" />
+          <Button text="STOP" tap="" row="1" />
+        </GridLayout>
+      </AbsoluteLayout>
+    </ac:AnimatedCircle>
+  </GridLayout>
 
-  </AbsoluteLayout>
+  <!-- </AbsoluteLayout> -->
 </Page>
