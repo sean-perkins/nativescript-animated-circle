@@ -191,8 +191,15 @@ export class AnimatedCircle extends Common {
             if (this.startAngle) {
                 this.android.setStartAngle(this.startAngle);
             }
+			if (this.barWidth) {
+				this.android.setBarWidth(this.barWidth);
+			} else {
+				if (this.rimWidth) {
+					// set rim width to bar width if no bar width provided
+					this.android.setBarWidth(this.rimWidth);
+				}
+			}
             if (this.rimWidth) {
-                this.android.setBarWidth(this.rimWidth);
                 this.android.setRimWidth(this.rimWidth);
             }
             if (this.barColor) {
