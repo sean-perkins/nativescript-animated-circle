@@ -1,10 +1,13 @@
-import * as observable from 'tns-core-modules/data/observable';
-import * as pages from 'tns-core-modules/ui/page';
+import { EventData } from 'tns-core-modules/data/observable';
+import { Page } from 'tns-core-modules/ui/page';
 import { HelloWorldModel } from './main-view-model';
 
-// Event handler for Page 'loaded' event attached in main-page.xml
-export function pageLoaded(args: observable.EventData) {
-  // Get the event sender
-  const page = <pages.Page>args.object;
+// Event handler for Page "navigatingTo" event attached in main-page.xml
+export function navigatingTo(args: EventData) {
+  const page = <Page>args.object;
   page.bindingContext = new HelloWorldModel();
+}
+
+export function circleLoaded(args) {
+  console.log(args.android);
 }

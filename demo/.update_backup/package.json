@@ -9,11 +9,10 @@
     "nativescript-animated-circle": "file:../src",
     "nativescript-theme-core": "^1.0.4",
     "nativescript-unit-test-runner": "0.7.0",
-    "tns-core-modules": "~6.0.0"
+    "tns-core-modules": "6.0.1"
   },
   "devDependencies": {
-    "nativescript-dev-webpack": "~1.0.0",
-    "typescript": "~3.4.0",
+    "nativescript-dev-webpack": "1.0.1",
     "karma-webpack": "3.0.5",
     "tns-platform-declarations": "~6.0.4"
   },
