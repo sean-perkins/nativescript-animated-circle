@@ -1,5 +1,6 @@
+// @ts-nocheck
 import { Common } from './animated-circle.common';
-import { Color } from 'tns-core-modules/color';
+import { Color } from '@nativescript/core/color';
 
 declare const at;
 
